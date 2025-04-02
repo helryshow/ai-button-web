@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useWebhook } from "@/contexts/WebhookContext";
-import { Zap, Play, Stop, ArrowRight, ArrowLeft } from "lucide-react";
+import { Zap, Play, ArrowRight, ArrowLeft, Square } from "lucide-react";
 
 type AIActionType = 'iniciar' | 'parar' | 'avançar' | 'voltar' | 'turbo';
 
@@ -21,7 +21,7 @@ const actionConfig = {
     hoverScale: 'hover:scale-105'
   },
   parar: { 
-    icon: Stop, 
+    icon: Square, // Replacing Stop with Square which is a common stop icon alternative
     gradient: 'bg-ai-red-gradient hover:bg-red-600',
     hoverScale: 'hover:scale-105'
   },
