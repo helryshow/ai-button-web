@@ -42,7 +42,7 @@ const IndexContent = () => {
               type="text" 
               value={phoneNumber}
               onChange={handlePhoneChange}
-              placeholder="559884286874@s.whatsapp.net"
+              placeholder="88567675"
               className="w-full mb-2 text-base"
             />
             <p className="text-xs text-gray-500">
