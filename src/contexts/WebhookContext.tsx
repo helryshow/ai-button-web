@@ -4,6 +4,7 @@ import { useToast } from "@/components/ui/use-toast";
 
 interface WebhookContextType {
   triggerWebhook: (actionType: string) => Promise<void>;
+  setTarget: (target: string) => void;
   isLoading: boolean;
 }
 
@@ -23,6 +24,7 @@ interface WebhookProviderProps {
 
 export const WebhookProvider = ({ children }: WebhookProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [target, setTarget] = useState('559884286874@s.whatsapp.net');
   const { toast } = useToast();
   
   // URL do webhook fixo
@@ -30,7 +32,7 @@ export const WebhookProvider = ({ children }: WebhookProviderProps) => {
 
   const triggerWebhook = async (actionType: string) => {
     setIsLoading(true);
-    console.log(`Ativando IA via webhook para ação: ${actionType}`);
+    console.log(`Ativando IA via webhook para ação: ${actionType}, alvo: ${target}`);
 
     try {
       const response = await fetch(webhookUrl, {
@@ -41,6 +43,7 @@ export const WebhookProvider = ({ children }: WebhookProviderProps) => {
         mode: "no-cors", // Lidar com CORS
         body: JSON.stringify({
           action: actionType,
+          target: target,
           timestamp: new Date().toISOString(),
           source: window.location.origin,
         }),
@@ -49,7 +52,7 @@ export const WebhookProvider = ({ children }: WebhookProviderProps) => {
       // Como estamos usando no-cors, não teremos um status de resposta apropriado
       toast({
         title: "IA Ativada",
-        description: `Comando "${actionType}" enviado com sucesso para a IA`,
+        description: `Comando "${actionType}" enviado com sucesso para a IA no número ${target}`,
       });
     } catch (error) {
       console.error("Erro ao acionar webhook:", error);
@@ -64,7 +67,7 @@ export const WebhookProvider = ({ children }: WebhookProviderProps) => {
   };
 
   return (
-    <WebhookContext.Provider value={{ triggerWebhook, isLoading }}>
+    <WebhookContext.Provider value={{ triggerWebhook, setTarget, isLoading }}>
       {children}
     </WebhookContext.Provider>
   );
