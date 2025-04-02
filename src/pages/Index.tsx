@@ -17,44 +17,22 @@ const Index = () => {
               Controle de IA
             </h1>
             <p className="text-gray-600 max-w-xl mx-auto">
-              Use os botões abaixo para enviar comandos para a inteligência artificial através do webhook.
+              Clique no botão abaixo para iniciar a inteligência artificial.
             </p>
           </header>
 
-          <main className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl p-8 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-              <AIButton 
-                type="iniciar" 
-                label="Iniciar IA" 
-                className="w-full"
-              />
-              <AIButton 
-                type="parar" 
-                label="Parar IA" 
-                className="w-full"
-              />
-              <AIButton 
-                type="turbo" 
-                label="Modo Turbo" 
-                className="w-full"
-              />
-              <AIButton 
-                type="avançar" 
-                label="Avançar" 
-                className="w-full"
-              />
-              <AIButton 
-                type="voltar" 
-                label="Voltar" 
-                className="w-full"
-              />
-            </div>
+          <main className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl p-8 mb-8 flex justify-center">
+            <AIButton 
+              type="iniciar" 
+              label="Iniciar IA" 
+              className="w-64 h-16 text-lg"
+            />
 
             <div className="mt-8 bg-gray-50 p-4 rounded-lg border border-gray-200">
               <h3 className="text-lg font-medium text-gray-800 mb-2">Sobre esta aplicação</h3>
               <p className="text-gray-600 text-sm">
                 Esta aplicação envia comandos para um sistema de IA através de webhooks.
-                Cada botão aciona uma função diferente e envia os dados necessários para que a IA execute a ação correspondente.
+                Basta clicar no botão para iniciar a IA.
               </p>
             </div>
           </main>
